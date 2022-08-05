@@ -52,7 +52,7 @@ function renderData() {
 
 //輸入輸入代辦事項
 btn_add.addEventListener("click",function(e){
-  if (txt_add.value ==""){
+  if (txt_add.value.trim() ==""){
     alert("請輸入代辦事項");
     return;
   }
@@ -95,11 +95,9 @@ list.addEventListener("click", function(e){
 list_footer_a.addEventListener("click", function(e){
   if (e.target.getAttribute("class")=="clearChecked"){    
     //console.log(e);
-    data.forEach(function(item,index){
-      if (item.checked) {
-        data.splice(index, 1);  
-      }
-    });    
+    data = data.filter(function(item){        
+      return item.checked == false;
+    });
     filterData();
   }
 });
